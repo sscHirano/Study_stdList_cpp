@@ -35,11 +35,6 @@ int main()
 	// 任意のクラスをlistにする
 	study_03_templete();
 
-	// iterator
-
-	// vector (やる？)
-
-
 	return 0;
 }
 
@@ -50,8 +45,10 @@ void study_01_add_get()
 {
 	std::cout << "---- study_01_add_get() begin.\n";
 
-	// list変数を定義
+	// ■list変数を定義
+	// intのListを作るので<>の中はintを指定する。(つまりListの中はintしか入らない)
 	std::list<int> list;		// listの中身：空
+
 	// ■要素追加
 	// 末尾に入れる
 	list.push_back(10);			// lintの中身：10
@@ -59,13 +56,16 @@ void study_01_add_get()
 	list.push_back(30);			// lintの中身：10,20,30
 	// 先頭に入れる
 	list.push_front(0);			// lintの中身：0,10,20,30
+
 	// ■参照
 	// 要素数の確認
 	std::cout << "参照\n";
 	std::cout << "\tlist count = " << list.size() << "\n";
 	// 参照用変数(iterator)の取得
+	// 参照するためには、iteratorが必要
+	// listからiteratorを取得する。今回はbegin()で先頭のiteratorを取得
+	// iteratorはポインタのようなもの。
 	std::list<int>::iterator itrator = list.begin();
-	// iteratorはポインタのように利用する。
 	std::cout << "\tdata:" << *itrator++ << "\n";	// ++で、参照先を次の要素に動かしている。
 	std::cout << "\tdata:" << *itrator++ << "\n";
 	std::cout << "\tdata:" << *itrator++ << "\n";
@@ -96,8 +96,7 @@ void study_01_add_get()
 	list.pop_back();		// listの中身：100,20
 	// iteratorを使って任意の位置を削除
 	auto iterator = list.begin();
-	// 先頭の次へ移動
-	iterator++;
+	iterator++;	// 先頭の次へ移動
 	// iteratorの差す先を削除
 	list.erase(iterator);	// listの中身：100
 	std::cout << "\tlist count = " << list.size() << "\n";
@@ -169,6 +168,10 @@ void study_03_templete()
 	std::cout << "---- study_03_templete() end.\n";
 }
 
+/// <summary>
+/// list内容のコンソール出力
+/// </summary>
+/// <param name="list"></param>
 void dump(std::list<Infomation> list)
 {
 	std::cout << "dump\n";
